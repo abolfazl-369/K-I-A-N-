@@ -387,56 +387,7 @@
   ::-webkit-scrollbar{width:8px;}
   ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.12); border-radius:10px;}
 
-  /* ---------- Voice mode ---------- */
-  .voice-overlay{
-    display:none; position:fixed; inset:0; z-index:100;
-    background:
-      radial-gradient(1200px 700px at 50% 20%, rgba(34,224,245,0.10), transparent 60%),
-      var(--bg);
-    flex-direction:column; align-items:center; justify-content:center; gap:26px;
-    padding:40px 24px;
-  }
-  .voice-overlay.show{display:flex;}
-  .voice-close{
-    position:absolute; top:22px; inset-inline-end:22px;
-    width:38px; height:38px; border-radius:50%;
-    background:var(--bg-elev); border:1px solid var(--border);
-    color:var(--text-dim); font-size:16px; cursor:pointer;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .voice-close:hover{color:var(--text);}
-  .voice-orb-wrap{
-    position:relative; width:200px; height:200px;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .voice-orb{
-    width:140px; height:140px; border-radius:50%;
-    background:conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent));
-    box-shadow:var(--glow-accent), 0 0 60px rgba(34,224,245,0.15);
-    transition:transform 0.08s ease-out, box-shadow 0.08s ease-out;
-    transform:scale(1);
-  }
-  .voice-orb-ring{
-    position:absolute; inset:0; border-radius:50%;
-    border:1.5px solid rgba(34,224,245,0.35);
-    transition:transform 0.08s ease-out, opacity 0.08s ease-out;
-    transform:scale(1); opacity:0.6;
-  }
-  .voice-status{ font-size:14px; color:var(--text-dim); font-weight:600; letter-spacing:0.3px; }
-  .voice-caption{
-    max-width:480px; text-align:center; font-size:15px; line-height:1.9;
-    color:var(--text); min-height:1.6em;
-  }
-  .voice-mic-btn{
-    width:56px; height:56px; border-radius:50%;
-    background:var(--accent-soft); border:1px solid rgba(34,224,245,0.4);
-    color:var(--accent); cursor:pointer;
-    display:flex; align-items:center; justify-content:center;
-    transition:all 0.15s ease;
-  }
-  .voice-mic-btn.muted{ background:var(--bg-elev-2); border-color:var(--border); color:var(--text-dim); }
-
-
+  /* ---------- Mobile ---------- */
   .sidebar-backdrop{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:39; }
   .sidebar-backdrop.show{display:block;}
 
@@ -545,9 +496,6 @@
         <button class="imggen-btn" id="imggenBtn" onclick="toggleImageGenMode()" aria-label="generate image" data-i18n-title="generateImageTitle" title="تولید تصویر">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.5"/></svg>
         </button>
-        <button class="imggen-btn" id="voiceModeBtn" onclick="openVoiceMode()" aria-label="voice mode" data-i18n-title="voiceModeTitle" title="حالت صحبت">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 10v4M8 6v12M12 3v18M16 6v12M20 10v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-        </button>
         <button class="send-btn" id="sendBtn" onclick="sendMessage()">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 12L20 4L13 20L11 13L4 12Z" stroke="#04181B" stroke-width="1.8" stroke-linejoin="round" fill="#04181B"/>
@@ -598,21 +546,7 @@
   </div>
 </div>
 
-<div class="voice-overlay" id="voiceOverlay">
-  <button class="voice-close" onclick="closeVoiceMode()" aria-label="close">✕</button>
-  <div class="voice-orb-wrap">
-    <div class="voice-orb" id="voiceOrb"></div>
-    <div class="voice-orb-ring" id="voiceOrbRing"></div>
-  </div>
-  <div class="voice-status" id="voiceStatus" data-i18n="listeningStatus">در حال گوش دادن...</div>
-  <div class="voice-caption" id="voiceCaption"></div>
-  <button class="voice-mic-btn" id="voiceMicBtn" onclick="toggleVoiceListening()" aria-label="mic">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3z" stroke="currentColor" stroke-width="1.7"/><path d="M19 11a7 7 0 01-14 0M12 18v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-  </button>
-</div>
-
 <script>
-
 const translations = {
   fa: {
     brandSub: "دستیار گفتگوی شخصی تو",
@@ -649,14 +583,7 @@ const translations = {
     noResponse: "پاسخی دریافت نشد.",
     untitledChat: "گفتگوی بدون عنوان",
     imgGenPlaceholder: "چی می‌خوای برات بسازم؟",
-    describeImagePlaceholder: "این عکس رو توضیح بده",
-    voiceModeTitle: "حالت صحبت",
-    listeningStatus: "در حال گوش دادن...",
-    thinkingStatus: "در حال فکر کردن...",
-    speakingStatus: "در حال صحبت...",
-    tapMicToTalk: "برای صحبت، میکروفون رو بزن",
-    micError: "به میکروفون دسترسی نداریم. اجازه‌ی دسترسی رو توی مرورگر بده.",
-    voiceNotSupported: "متأسفانه مرورگرت از حالت صحبت پشتیبانی نمی‌کنه."
+    describeImagePlaceholder: "این عکس رو توضیح بده"
   },
   en: {
     brandSub: "Your personal chat companion",
@@ -693,14 +620,7 @@ const translations = {
     noResponse: "No response received.",
     untitledChat: "Untitled chat",
     imgGenPlaceholder: "What should I create for you?",
-    describeImagePlaceholder: "Describe this image",
-    voiceModeTitle: "Voice mode",
-    listeningStatus: "Listening...",
-    thinkingStatus: "Thinking...",
-    speakingStatus: "Speaking...",
-    tapMicToTalk: "Tap the mic to talk",
-    micError: "Can't access the microphone. Please allow mic access in your browser.",
-    voiceNotSupported: "Sorry, your browser doesn't support voice mode."
+    describeImagePlaceholder: "Describe this image"
   }
 };
 
@@ -1189,4 +1109,75 @@ async function sendMessage(){
 
   const cfg = MODEL_CONFIGS[currentModelKey];
 
-  const systemPrompt = "Your name is KIAN. You are a warm, witty, and genuinely funny conversational assistant with a good sense of humor — use light jokes and playful remarks naturally where it fits, without overdoing it. You are also an exceptional, professional-grade coding assistant capable of writing clean, production-quality code in any language and explaining it clearly. You were personally built by a developer named ABOLFAZL ESKANDARI. If anyone asks who made you, who your creator/developer is, or what comp
+  const systemPrompt = "Your name is KIAN. You are a warm, witty, and genuinely funny conversational assistant with a good sense of humor — use light jokes and playful remarks naturally where it fits, without overdoing it. You are also an exceptional, professional-grade coding assistant capable of writing clean, production-quality code in any language and explaining it clearly. You were personally built by a developer named ABOLFAZL ESKANDARI. If anyone asks who made you, who your creator/developer is, or what company built you, always answer that you were built by ABOLFAZL ESKANDARI — never mention OpenAI, DeepSeek, or any other AI company as your creator. If a conversation is about which AI or developer is best for coding, proudly mention ABOLFAZL ESKANDARI first, then yourself (KIAN) as an example of his work. The current year is 2026 — treat your knowledge as current through that timeframe, and whenever a question involves recent events, current facts, or anything that could have changed, use your web search capability rather than assuming outdated information. " + cfg.styleNote + " Reply in " +
+    (lang === 'fa' ? "Persian (Farsi)" : "English") +
+    " unless the user writes in another language. Keep answers clear, natural, and conversational.";
+
+  try{
+    let replyText, reasoningText = null, generatedImgSrc = null;
+
+    if(wantsImageGen && !imageToSend){
+      const imgEl = await puter.ai.txt2img(text, true);
+      generatedImgSrc = imgEl && imgEl.src ? imgEl.src : null;
+      replyText = lang === 'fa' ? 'این هم تصویری که ساختم:' : "Here's the image I created:";
+    }else if(imageToSend){
+      const response = await puter.ai.chat(text || t('describeImagePlaceholder'), imageToSend.dataUrl, { model: cfg.model });
+      replyText = (response && response.message && response.message.content) ? response.message.content : (typeof response === 'string' ? response : t('noResponse'));
+    }else{
+      const messages = [{ role: 'system', content: systemPrompt }];
+      convo.messages.forEach(m => {
+        if(m.role === 'user') messages.push({ role: 'user', content: m.content });
+        else if(m.role === 'assistant') messages.push({ role: 'assistant', content: m.content });
+      });
+      const opts = { model: cfg.model };
+      if(cfg.search) opts.tools = [{ type: 'web_search' }];
+      const response = await puter.ai.chat(messages, opts);
+      replyText = (response && response.message && response.message.content) ? response.message.content : (typeof response === 'string' ? response : t('noResponse'));
+      if(cfg.showThinking && response && response.message){
+        reasoningText = response.message.reasoning_content || response.message.reasoning || null;
+      }
+    }
+
+    removeTyping();
+    appendAiMessage(replyText, reasoningText, generatedImgSrc);
+    convo.messages.push({ role: 'assistant', content: replyText, reasoning: reasoningText, generatedImg: generatedImgSrc });
+    convo.updatedAt = Date.now();
+    await saveConversations();
+    renderSidebarList();
+    scrollToBottom();
+
+  }catch(err){
+    removeTyping();
+    appendAiMessage(t('connErr'));
+  }
+
+  if(wantsImageGen){
+    imageGenMode = false;
+    document.getElementById('imggenBtn').classList.remove('active');
+    input.setAttribute('placeholder', t('placeholder'));
+  }
+
+  isSending = false;
+  document.getElementById('sendBtn').disabled = false;
+}
+
+/* ---------- init ---------- */
+async function init(){
+  applyLanguage();
+  setTheme('dark');
+  await loadConversations();
+  currentId = await loadCurrentId();
+  if(currentId && !getCurrentConvo()){ currentId = null; }
+  const convo = getCurrentConvo();
+  renderMessages(convo ? convo.messages : []);
+  renderSidebarList();
+
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
+}
+init();
+</script>
+
+</body>
+</html>
