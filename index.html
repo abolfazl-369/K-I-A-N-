@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KIAN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://js.puter.com/v2/"></script>
+<style>
+  :root{
+    --bg: #14111F;
+    --bg-elev: #1B1830;
+    --bg-elev-2: #221E3C;
+    --text: #F0EDF9;
+    --text-dim: #A79FC2;
+    --accent: #E3A857;
+    --accent-soft: rgba(227,168,87,0.14);
+    --accent-2: #6FD6C4;
+    --border: rgba(255,255,255,0.07);
+    --danger: #E36F6F;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:'Vazirmatn','Inter',sans-serif;
+    background:
+      radial-gradient(1200px 600px at 20% -10%, rgba(227,168,87,0.08), transparent 60%),
+      radial-gradient(1000px 500px at 100% 10%, rgba(111,214,196,0.06), transparent 55%),
+      var(--bg);
+    color:var(--text);
+    height:100vh;
+    display:flex;
+    overflow:hidden;
+  }
+  html[lang="en"] body{font-family:'Inter','Vazirmatn',sans-serif;}
+
+  html[data-theme="light"]{
+    --bg: #FAF8F4;
+    --bg-elev: #FFFFFF;
+    --bg-elev-2: #F1EDE4;
+    --text: #241F30;
+    --text-dim: #7A7288;
+    --accent: #C97F2E;
+    --accent-soft: rgba(201,127,46,0.12);
+    --accent-2: #1E9C87;
+    --border: rgba(20,15,35,0.09);
+    --danger: #C24545;
+  }
+  html[data-theme="light"] body{
+    background:
+      radial-gradient(1200px 600px at 20% -10%, rgba(201,127,46,0.07), transparent 60%),
+      radial-gradient(1000px 500px at 100% 10%, rgba(30,156,135,0.05), transparent 55%),
+      var(--bg);
+  }
+  html[data-theme="light"] .msg-row.user .bubble{color:#2B1B08;}
+  html[data-theme="light"] .send-btn svg{stroke:#2B1B08; fill:#2B1B08;}
+  html[data-theme="light"] ::-webkit-scrollbar-thumb{background:rgba(20,15,35,0.14);}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    width:264px;
+    flex-shrink:0;
+    background:var(--bg-elev);
+    border-left:1px solid var(--border);
+    display:flex;
+    flex-direction:column;
+    padding:18px 14px;
+    gap:12px;
+  }
+  html[dir="ltr"] .sidebar{border-left:none; border-right:1px solid var(--border);}
+
+  .brand{
+    display:flex; align-items:center; gap:11px;
+    padding:6px 4px 16px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:2px;
+  }
+  .brand-orb{
+    width:32px; height:32px; border-radius:50%;
+    background:conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent));
+    flex-shrink:0;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.06), 0 4px 14px rgba(227,168,87,0.18);
+  }
+  .brand-name{
+    font-weight:800; font-size:17px; letter-spacing:2.5px;
+  }
+  .brand-sub{font-size:11px; color:var(--text-dim); margin-top:2px; letter-spacing:0;}
+
+  .new-chat-btn{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    border:1px solid rgba(227,168,87,0.3);
+    border-radius:11px;
+    padding:11px;
+    font-family:inherit; font-weight:600; font-size:13.5px;
+    cursor:pointer;
+    transition:background 0.15s ease, transform 0.1s ease;
+  }
+  .new-chat-btn:hover{background:rgba(227,168,87,0.22);}
+  .new-chat-btn:active{transform:scale(0.98);}
+
+  .settings-btn{
+    margin-top:auto;
+    display:flex; align-items:center; gap:8px;
+    background:transparent;
+    color:var(--text-dim);
+    border:1px solid var(--border);
+    border-radius:11px;
+    padding:10px 12px;
+    font-family:inherit; font-size:13px;
+    cursor:pointer;
+    transition:all 0.15s ease;
+  }
+  .settings-btn:hover{color:var(--text); border-color:rgba(255,255,255,0.15); background:rgba(255,255,255,0.03);}
+
+  .key-status{
+    font-size:11px; padding:9px 11px; border-radius:9px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border);
+    color:var(--text-dim);
+    display:flex; align-items:center; gap:7px;
+  }
+  .dot{width:6px; height:6px; border-radius:50%; background:var(--danger); flex-shrink:0;}
+  .dot.ok{background:var(--accent-2); box-shadow:0 0 6px rgba(111,214,196,0.6);}
+
+  .credit{
+    font-size:10.5px; color:rgba(167,159,194,0.55);
+    text-align:center; padding-top:4px; line-height:1.7;
+  }
+  .credit b{color:rgba(227,168,87,0.7); font-weight:600;}
+
+  /* ---------- Main ---------- */
+  .main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+  }
+  .topbar{
+    padding:15px 22px;
+    border-bottom:1px solid var(--border);
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px;
+    backdrop-filter:blur(6px);
+  }
+  .topbar-title{font-weight:700; font-size:15px; flex:1; min-width:0;}
+  .topbar-title span{color:var(--text-dim); font-weight:400; font-size:12px; display:block; margin-top:2px;}
+
+  .icon-btn{
+    background:transparent; border:1px solid var(--border); border-radius:10px;
+    width:36px; height:36px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--text-dim); cursor:pointer;
+    transition:all 0.15s ease;
+  }
+  .icon-btn:hover{color:var(--text); border-color:rgba(255,255,255,0.18); background:rgba(255,255,255,0.03);}
+  .menu-btn{display:none;}
+
+  .chat-scroll{
+    flex:1;
+    overflow-y:auto;
+    padding:28px 0 10px;
+  }
+  .chat-inner{
+    max-width:720px;
+    margin:0 auto;
+    padding:0 24px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+
+  .empty-state{
+    height:100%;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    gap:14px;
+    color:var(--text-dim);
+    padding:40px;
+  }
+  .empty-orb{
+    width:58px; height:58px; border-radius:50%;
+    background:conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent));
+    animation:breathe 3.5s ease-in-out infinite;
+    box-shadow:0 0 40px rgba(227,168,87,0.12);
+  }
+  @keyframes breathe{
+    0%,100%{transform:scale(1); filter:brightness(1);}
+    50%{transform:scale(1.08); filter:brightness(1.15);}
+  }
+  .empty-state h2{color:var(--text); font-size:19px; font-weight:700;}
+  .empty-state p{font-size:13.5px; max-width:320px; line-height:1.9;}
+
+  .msg-row{display:flex; gap:12px; align-items:flex-start;}
+  .msg-row.user{flex-direction:row-reverse;}
+  html[dir="ltr"] .msg-row.user{flex-direction:row-reverse;}
+  html[dir="ltr"] .msg-row.ai{flex-direction:row;}
+  .avatar{
+    width:30px; height:30px; border-radius:50%; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:700;
+    margin-top:2px;
+  }
+  .avatar.ai{background:conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent));}
+  .avatar.user{background:var(--bg-elev-2); color:var(--text-dim); border:1px solid var(--border);}
+
+  .bubble{
+    max-width:78%;
+    padding:12px 16px;
+    border-radius:16px;
+    font-size:14.5px;
+    line-height:1.9;
+    white-space:pre-wrap;
+    word-break:break-word;
+  }
+  .msg-row.ai .bubble{
+    background:var(--bg-elev);
+    border:1px solid var(--border);
+  }
+  .msg-row.user .bubble{
+    background:linear-gradient(135deg, var(--accent) 0%, #c98f45 100%);
+    color:#1B140A;
+    font-weight:500;
+  }
+
+  .sources{
+    margin-top:8px; padding-top:8px; border-top:1px solid var(--border);
+    display:flex; flex-wrap:wrap; gap:6px;
+  }
+  .source-chip{
+    font-size:11px; color:var(--accent-2);
+    background:rgba(111,214,196,0.1);
+    border:1px solid rgba(111,214,196,0.25);
+    border-radius:100px;
+    padding:3px 10px;
+    text-decoration:none;
+    max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+
+  .typing{display:flex; gap:4px; padding:6px 2px;}
+  .typing span{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--text-dim);
+    animation:blink 1.3s infinite ease-in-out;
+  }
+  .typing span:nth-child(2){animation-delay:0.18s;}
+  .typing span:nth-child(3){animation-delay:0.36s;}
+  @keyframes blink{0%,80%,100%{opacity:0.25; transform:translateY(0);} 40%{opacity:1; transform:translateY(-3px);}}
+
+  .composer{
+    padding:14px 24px 20px;
+    border-top:1px solid var(--border);
+  }
+  .composer-inner{
+    max-width:720px; margin:0 auto;
+    display:flex; align-items:flex-end; gap:10px;
+    background:var(--bg-elev);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:8px;
+    transition:border-color 0.15s ease;
+  }
+  .composer-inner:focus-within{border-color:rgba(227,168,87,0.4);}
+  textarea{
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    resize:none;
+    color:var(--text);
+    font-family:inherit;
+    font-size:14.5px;
+    line-height:1.7;
+    padding:10px 8px;
+    max-height:160px;
+  }
+  textarea::placeholder{color:var(--text-dim);}
+  .send-btn{
+    width:38px; height:38px; border-radius:12px; flex-shrink:0;
+    background:var(--accent);
+    border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:transform 0.1s ease, opacity 0.15s ease;
+  }
+  .send-btn:disabled{opacity:0.35; cursor:not-allowed;}
+  .send-btn:not(:disabled):hover{transform:scale(1.05);}
+  .send-btn svg{width:17px; height:17px;}
+  html[dir="ltr"] .send-btn svg{transform:scaleX(-1);}
+
+  .hint{
+    max-width:720px; margin:8px auto 0; text-align:center;
+    font-size:11px; color:var(--text-dim);
+  }
+
+  /* ---------- Modal ---------- */
+  .modal-backdrop{
+    position:fixed; inset:0; background:rgba(0,0,0,0.55);
+    display:none; align-items:center; justify-content:center;
+    z-index:50; padding:20px;
+  }
+  .modal-backdrop.show{display:flex;}
+  .modal{
+    background:var(--bg-elev); border:1px solid var(--border);
+    border-radius:18px; padding:22px; max-width:420px; width:100%;
+    max-height:88vh; overflow-y:auto;
+  }
+  .modal h3{font-size:16px; margin-bottom:14px;}
+  .modal-section{margin-bottom:18px;}
+  .modal-label{font-size:12.5px; font-weight:600; margin-bottom:6px; display:block;}
+  .modal p.desc{font-size:12px; color:var(--text-dim); line-height:1.85; margin-bottom:10px;}
+  .modal a{color:var(--accent-2);}
+  .modal input{
+    width:100%; padding:11px 12px; border-radius:10px;
+    background:var(--bg); border:1px solid var(--border);
+    color:var(--text); font-family:inherit; font-size:13.5px;
+    outline:none;
+  }
+  .modal input:focus{border-color:rgba(227,168,87,0.4);}
+
+  .row-between{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:11px 12px;
+    background:var(--bg); border:1px solid var(--border); border-radius:10px;
+  }
+  .row-between .modal-label{margin-bottom:0;}
+
+  .switch{
+    width:34px; height:19px; border-radius:100px;
+    background:rgba(255,255,255,0.14);
+    position:relative; transition:background 0.2s ease; flex-shrink:0;
+    cursor:pointer;
+  }
+  .switch::after{
+    content:''; position:absolute; top:2px; right:2px;
+    width:15px; height:15px; border-radius:50%;
+    background:#fff; transition:transform 0.2s ease;
+  }
+  .switch.on{background:var(--accent);}
+  .switch.on::after{transform:translateX(-15px);}
+  html[dir="ltr"] .switch::after{right:auto; left:2px;}
+  html[dir="ltr"] .switch.on::after{transform:translateX(15px);}
+
+  .lang-pick{display:flex; gap:8px;}
+  .lang-btn{
+    flex:1; padding:9px; border-radius:9px;
+    background:var(--bg); border:1px solid var(--border);
+    color:var(--text-dim); font-family:inherit; font-size:12.5px; font-weight:600;
+    cursor:pointer; transition:all 0.15s ease;
+  }
+  .lang-btn.active{background:var(--accent-soft); border-color:rgba(227,168,87,0.35); color:var(--accent);}
+
+  .modal-actions{display:flex; gap:8px; justify-content:flex-end; margin-top:4px;}
+  .modal-btn{
+    padding:9px 16px; border-radius:9px; border:none;
+    font-family:inherit; font-size:13px; font-weight:600; cursor:pointer;
+  }
+  .modal-btn.cancel{background:transparent; color:var(--text-dim); border:1px solid var(--border);}
+  .modal-btn.save{background:var(--accent); color:#1B140A;}
+
+  .modal-credit{
+    text-align:center; font-size:10.5px; color:rgba(167,159,194,0.5);
+    margin-top:14px; padding-top:12px; border-top:1px solid var(--border);
+    line-height:1.8;
+  }
+  .modal-credit b{color:rgba(227,168,87,0.7); font-weight:600;}
+
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.12); border-radius:10px;}
+
+  /* ---------- Mobile ---------- */
+  .sidebar-backdrop{
+    display:none;
+    position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:39;
+  }
+  .sidebar-backdrop.show{display:block;}
+
+  @media (max-width: 760px){
+    body{overflow:hidden;}
+    .sidebar{
+      position:fixed; inset:0 auto 0 0;
+      right:0; left:auto;
+      width:78vw; max-width:280px;
+      z-index:40;
+      transform:translateX(100%);
+      transition:transform 0.25s ease;
+      box-shadow:-8px 0 30px rgba(0,0,0,0.4);
+    }
+    html[dir="ltr"] .sidebar{ right:auto; left:0; transform:translateX(-100%); }
+    .sidebar.open{ transform:translateX(0); }
+    .menu-btn{display:flex;}
+    .topbar{padding:13px 14px;}
+    .topbar-title{font-size:13.5px;}
+    .topbar-title span{font-size:10.5px;}
+    .chat-inner{padding:0 14px;}
+    .composer{padding:12px 14px 16px;}
+    .bubble{max-width:86%; font-size:14px;}
+    .main{width:100%;}
+    .modal{padding:18px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeSidebar()"></div>
+<div class="sidebar" id="sidebar">
+  <div class="brand">
+    <div class="brand-orb"></div>
+    <div>
+      <div class="brand-name">KIAN</div>
+      <div class="brand-sub" data-i18n="brandSub">دستیار گفتگوی شخصی تو</div>
+    </div>
+  </div>
+  <button class="new-chat-btn" onclick="newChat()">
+    <span data-i18n="newChat">+ گفتگوی جدید</span>
+  </button>
+  <div class="key-status" id="keyStatus">
+    <span class="dot ok"></span>
+    <span data-i18n="poweredBy">آماده به کار — نیازی به کلید یا هزینه نیست</span>
+  </div>
+  <button class="settings-btn" onclick="openModal()">
+    <span>⚙️</span><span data-i18n="settingsBtn">تنظیمات و پروفایل</span>
+  </button>
+  <div class="credit" data-i18n="creditText">ساخته شده توسط <b>ABOLFAZL ESKANDARI</b> و Claude</div>
+</div>
+
+<div class="main">
+  <div class="topbar">
+    <button class="icon-btn menu-btn" onclick="openSidebar()" aria-label="menu">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="topbar-title">
+      <span data-i18n="topbarTitle" style="font-weight:700; font-size:15px; display:block;">چت با KIAN</span>
+      <span data-i18n="topbarSub">پاسخ‌گو و همراه، هر وقت لازم باشه دنبال اطلاعات تازه می‌گرده</span>
+    </div>
+    <button class="icon-btn" onclick="openModal()" aria-label="settings">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="1.6"/><path d="M19.4 13a7.6 7.6 0 000-2l1.9-1.5-2-3.4-2.3.9a7.7 7.7 0 00-1.7-1L15 3.5h-4l-.3 2.4a7.7 7.7 0 00-1.7 1l-2.3-.9-2 3.4L6.6 11a7.6 7.6 0 000 2l-1.9 1.5 2 3.4 2.3-.9c.5.4 1.1.75 1.7 1l.3 2.4h4l.3-2.4c.6-.25 1.2-.6 1.7-1l2.3.9 2-3.4-1.9-1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <div class="chat-scroll" id="chatScroll">
+    <div class="chat-inner" id="chatInner">
+      <div class="empty-state" id="emptyState">
+        <div class="empty-orb"></div>
+        <h2 data-i18n="emptyTitle">سلام! چطور می‌تونم کمکت کنم؟</h2>
+        <p data-i18n="emptyText">هر سوالی داری بپرس. اگه جواب نیاز به اطلاعات به‌روز داشته باشه، خودم می‌رم توی وب سرچ می‌کنم و همون‌جا جواب می‌دم.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="composer">
+    <div class="composer-inner">
+      <textarea id="input" rows="1" data-i18n-placeholder="placeholder" placeholder="پیامت رو بنویس..." onkeydown="handleKey(event)" oninput="autoGrow(this)"></textarea>
+      <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 12L20 4L13 20L11 13L4 12Z" stroke="#1B140A" stroke-width="1.8" stroke-linejoin="round" fill="#1B140A"/>
+        </svg>
+      </button>
+    </div>
+    <div class="hint" data-i18n="hintText">Enter برای ارسال، Shift+Enter برای خط جدید</div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <h3 data-i18n="modalHeading">تنظیمات و پروفایل</h3>
+
+    <div class="modal-section">
+      <div class="row-between">
+        <span class="modal-label" data-i18n="poweredByLabel">وضعیت سرویس</span>
+        <span style="font-size:11.5px; color:var(--accent-2);" data-i18n="poweredByStatus">فعال، رایگان</span>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <span class="modal-label" data-i18n="langLabel">زبان محیط</span>
+      <div class="lang-pick">
+        <button class="lang-btn active" id="langFaBtn" onclick="setLanguage('fa')">فارسی</button>
+        <button class="lang-btn" id="langEnBtn" onclick="setLanguage('en')">English</button>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <span class="modal-label" data-i18n="themeLabel">تم برنامه</span>
+      <div class="lang-pick">
+        <button class="lang-btn active" id="themeDarkBtn" onclick="setTheme('dark')">
+          <span data-i18n="themeDark">🌙 تیره</span>
+        </button>
+        <button class="lang-btn" id="themeLightBtn" onclick="setTheme('light')">
+          <span data-i18n="themeLight">☀️ روشن</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="modal-btn save" onclick="closeModal()" data-i18n="closeBtn">باشه</button>
+    </div>
+
+    <div class="modal-credit" data-i18n="creditText">ساخته شده توسط <b>ABOLFAZL ESKANDARI</b> و Claude</div>
+  </div>
+</div>
+
+<script>
+const translations = {
+  fa: {
+    brandSub: "دستیار گفتگوی شخصی تو",
+    newChat: "+ گفتگوی جدید",
+    poweredBy: "آماده به کار — نیازی به کلید یا هزینه نیست",
+    settingsBtn: "تنظیمات و پروفایل",
+    topbarTitle: "چت با KIAN",
+    topbarSub: "پاسخ‌گو و همراه، کاملاً رایگان و بدون نیاز به ثبت‌نام",
+    emptyTitle: "سلام! چطور می‌تونم کمکت کنم؟",
+    emptyText: "هر سوالی داری بپرس، همین الان آماده‌ام.",
+    placeholder: "پیامت رو بنویس...",
+    hintText: "Enter برای ارسال، Shift+Enter برای خط جدید",
+    modalHeading: "تنظیمات و پروفایل",
+    poweredByLabel: "وضعیت سرویس",
+    poweredByStatus: "فعال، رایگان",
+    langLabel: "زبان محیط",
+    themeLabel: "تم برنامه",
+    themeDark: "🌙 تیره",
+    themeLight: "☀️ روشن",
+    closeBtn: "باشه",
+    creditHtml: 'ساخته شده توسط <b>ABOLFAZL ESKANDARI</b> و Claude',
+    errPrefix: "مشکلی پیش اومد: ",
+    connErr: "اتصال برقرار نشد. اگه این صفحه رو داخل پیش‌نمایش اپ کلود باز کردی، اون محیط اجازه‌ی اتصال به سرورهای خارجی رو نمی‌ده — فایل رو دانلود کن و با مرورگر گوشیت (کروم) بازش کن. اگه همین‌جوری هم توی مرورگر بود، اینترنتت رو چک کن.",
+    noResponse: "پاسخی دریافت نشد.",
+    youLabel: "تو"
+  },
+  en: {
+    brandSub: "Your personal chat companion",
+    newChat: "+ New chat",
+    poweredBy: "Ready to go — no key or cost needed",
+    settingsBtn: "Settings & profile",
+    topbarTitle: "Chat with KIAN",
+    topbarSub: "Responsive and helpful — completely free, no signup needed",
+    emptyTitle: "Hey! How can I help?",
+    emptyText: "Ask me anything, I'm ready right now.",
+    placeholder: "Type your message...",
+    hintText: "Enter to send, Shift+Enter for a new line",
+    modalHeading: "Settings & profile",
+    poweredByLabel: "Service status",
+    poweredByStatus: "Active, free",
+    langLabel: "Interface language",
+    themeLabel: "App theme",
+    themeDark: "🌙 Dark",
+    themeLight: "☀️ Light",
+    closeBtn: "Got it",
+    creditHtml: 'Built by <b>ABOLFAZL ESKANDARI</b> and Claude',
+    errPrefix: "Something went wrong: ",
+    connErr: "Couldn't connect. If you're viewing this inside the Claude app's preview, that sandbox blocks calls to outside servers — download the file and open it in your phone's browser instead. If it still fails in a real browser, check your internet connection.",
+    noResponse: "No response received.",
+    youLabel: "You"
+  }
+};
+
+let history = [];
+let isSending = false;
+let lang = 'fa';
+let theme = 'dark';
+
+function setTheme(th){
+  theme = th;
+  document.getElementById('htmlRoot').setAttribute('data-theme', theme);
+  document.getElementById('themeDarkBtn').classList.toggle('active', theme === 'dark');
+  document.getElementById('themeLightBtn').classList.toggle('active', theme === 'light');
+}
+
+function t(key){ return translations[lang][key]; }
+
+function applyLanguage(){
+  document.getElementById('htmlRoot').setAttribute('lang', lang);
+  document.getElementById('htmlRoot').setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(key === 'creditText'){
+      el.innerHTML = t('creditHtml');
+    } else if(translations[lang][key] !== undefined){
+      el.textContent = translations[lang][key];
+    }
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    el.setAttribute('placeholder', translations[lang][key]);
+  });
+
+  document.getElementById('langFaBtn').classList.toggle('active', lang === 'fa');
+  document.getElementById('langEnBtn').classList.toggle('active', lang === 'en');
+}
+
+function setLanguage(l){
+  lang = l;
+  applyLanguage();
+}
+
+function openModal(){
+  document.getElementById('modalBackdrop').classList.add('show');
+}
+function closeModal(){
+  document.getElementById('modalBackdrop').classList.remove('show');
+}
+
+function autoGrow(el){
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 160) + 'px';
+}
+
+function handleKey(e){
+  if(e.key === 'Enter' && !e.shiftKey){
+    e.preventDefault();
+    sendMessage();
+  }
+}
+
+function openSidebar(){
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('sidebarBackdrop').classList.add('show');
+}
+function closeSidebar(){
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarBackdrop').classList.remove('show');
+}
+
+function newChat(){
+  closeSidebar();
+  history = [];
+  document.getElementById('chatInner').innerHTML = `
+    <div class="empty-state" id="emptyState">
+      <div class="empty-orb"></div>
+      <h2 data-i18n="emptyTitle">${t('emptyTitle')}</h2>
+      <p data-i18n="emptyText">${t('emptyText')}</p>
+    </div>`;
+}
+
+function scrollToBottom(){
+  const scroll = document.getElementById('chatScroll');
+  scroll.scrollTop = scroll.scrollHeight;
+}
+
+function appendMessage(role, text, sources){
+  const empty = document.getElementById('emptyState');
+  if(empty) empty.remove();
+
+  const row = document.createElement('div');
+  row.className = 'msg-row ' + (role === 'user' ? 'user' : 'ai');
+
+  const avatar = document.createElement('div');
+  avatar.className = 'avatar ' + (role === 'user' ? 'user' : 'ai');
+  avatar.textContent = role === 'user' ? t('youLabel') : '';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  bubble.textContent = text;
+
+  if(sources && sources.length){
+    const src = document.createElement('div');
+    src.className = 'sources';
+    sources.forEach(s => {
+      const a = document.createElement('a');
+      a.href = s.uri; a.target = '_blank'; a.className = 'source-chip';
+      a.textContent = s.title || s.uri;
+      src.appendChild(a);
+    });
+    bubble.appendChild(src);
+  }
+
+  row.appendChild(avatar);
+  row.appendChild(bubble);
+  document.getElementById('chatInner').appendChild(row);
+  scrollToBottom();
+  return bubble;
+}
+
+function appendTyping(){
+  const row = document.createElement('div');
+  row.className = 'msg-row ai';
+  row.id = 'typingRow';
+  row.innerHTML = `<div class="avatar ai"></div>
+    <div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  document.getElementById('chatInner').appendChild(row);
+  scrollToBottom();
+}
+function removeTyping(){
+  const row = document.getElementById('typingRow');
+  if(row) row.remove();
+}
+
+async function sendMessage(){
+  const input = document.getElementById('input');
+  const text = input.value.trim();
+  if(!text || isSending) return;
+
+  input.value = '';
+  autoGrow(input);
+  appendMessage('user', text);
+  history.push({ role: 'user', content: text });
+
+  isSending = true;
+  document.getElementById('sendBtn').disabled = true;
+  appendTyping();
+
+  try{
+    const systemPrompt = "You are KIAN, a warm, helpful conversational assistant. Reply in " +
+      (lang === 'fa' ? "Persian (Farsi)" : "English") +
+      " unless the user writes in another language. Keep answers clear and natural.";
+
+    const messages = [{ role: 'system', content: systemPrompt }, ...history];
+
+    const response = await puter.ai.chat(messages, { model: 'deepseek-chat' });
+
+    removeTyping();
+
+    const replyText = (response && response.message && response.message.content)
+      ? response.message.content
+      : (typeof response === 'string' ? response : t('noResponse'));
+
+    appendMessage('ai', replyText);
+    history.push({ role: 'assistant', content: replyText });
+
+  }catch(err){
+    removeTyping();
+    appendMessage('ai', t('connErr'));
+  }
+
+  isSending = false;
+  document.getElementById('sendBtn').disabled = false;
+}
+
+applyLanguage();
+setTheme('dark');
+</script>
+
+</body>
+</html>
