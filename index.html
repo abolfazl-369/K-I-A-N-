@@ -467,22 +467,22 @@
     <div class="brand-orb"></div>
     <div>
       <div class="brand-name">KIAN</div>
-      <div class="brand-sub" data-i18n="brandSub">دستیار گفتگوی شخصی تو</div>
+      <div class="brand-sub" data-i18n="brandSub">丿爻鬲蹖丕乇 诏賮鬲诏賵蹖 卮禺氐蹖 鬲賵</div>
     </div>
   </div>
   <button class="new-chat-btn" onclick="newChat()">
-    <span data-i18n="newChat">+ گفتگوی جدید</span>
+    <span data-i18n="newChat">+ 诏賮鬲诏賵蹖 噩丿蹖丿</span>
   </button>
-  <div class="history-label" data-i18n="historyLabel">گفتگوهای قبلی</div>
+  <div class="history-label" data-i18n="historyLabel">诏賮鬲诏賵賴丕蹖 賯亘賱蹖</div>
   <div class="convo-list" id="convoList"></div>
   <div class="sync-status" id="syncStatus">
     <span class="sync-dot"></span>
-    <span data-i18n="syncOn">ذخیره‌ی ابری با اکانت Puter فعاله</span>
+    <span data-i18n="syncOn">匕禺蹖乇賴鈥屰� 丕亘乇蹖 亘丕 丕讴丕賳鬲 Puter 賮毓丕賱賴</span>
   </div>
   <button class="settings-btn" onclick="openModal()">
-    <span>⚙️</span><span data-i18n="settingsBtn">تنظیمات و پروفایل</span>
+    <span>鈿欙笍</span><span data-i18n="settingsBtn">鬲賳馗蹖賲丕鬲 賵 倬乇賵賮丕蹖賱</span>
   </button>
-  <div class="credit" data-i18n="creditText">ساخته شده توسط <b>ABOLFAZL ESKANDARI</b> و Claude</div>
+  <div class="credit" data-i18n="creditText">爻丕禺鬲賴 卮丿賴 鬲賵爻胤 <b>ABOLFAZL ESKANDARI</b> 賵 Claude</div>
 </div>
 
 <div class="main">
@@ -500,8 +500,8 @@
     <div class="chat-inner" id="chatInner">
       <div class="empty-state" id="emptyState">
         <div class="empty-orb"></div>
-        <h2 data-i18n="emptyTitle">سلام! چطور می‌تونم کمکت کنم؟</h2>
-        <p data-i18n="emptyText">هر سوالی داری بپرس، همین الان آماده‌ام.</p>
+        <h2 data-i18n="emptyTitle">爻賱丕賲! 趩胤賵乇 賲蹖鈥屫堎嗁� 讴賲讴鬲 讴賳賲責</h2>
+        <p data-i18n="emptyText">賴乇 爻賵丕賱蹖 丿丕乇蹖 亘倬乇爻貙 賴賲蹖賳 丕賱丕賳 丌賲丕丿賴鈥屫з�.</p>
       </div>
     </div>
   </div>
@@ -510,10 +510,10 @@
     <div class="attach-preview-bar" id="attachBar">
       <img id="attachThumb" src="" alt="">
       <span class="name" id="attachName"></span>
-      <button class="attach-remove" onclick="removeAttachment()">✕</button>
+      <button class="attach-remove" onclick="removeAttachment()">鉁�</button>
     </div>
     <div class="composer-shell">
-      <textarea id="input" rows="1" data-i18n-placeholder="placeholder" placeholder="پیامت رو بنویس..." onkeydown="handleKey(event)" oninput="autoGrow(this)"></textarea>
+      <textarea id="input" rows="1" data-i18n-placeholder="placeholder" placeholder="倬蹖丕賲鬲 乇賵 亘賳賵蹖爻..." onkeydown="handleKey(event)" oninput="autoGrow(this)"></textarea>
       <div class="composer-toolbar">
         <div class="model-picker-wrap">
           <button class="model-pill" id="modelPillBtn" onclick="toggleModelMenu()">
@@ -523,15 +523,15 @@
           <div class="model-menu" id="modelMenu">
             <div class="model-menu-item" data-key="cheetah" onclick="selectModel('cheetah')">
               <span class="mname">CHEETAH 1</span>
-              <span class="mdesc" data-i18n="descCheetah">حل مسئله، ریاضی و درس</span>
+              <span class="mdesc" data-i18n="descCheetah">丨賱 賲爻卅賱賴貙 乇蹖丕囟蹖 賵 丿乇爻</span>
             </div>
             <div class="model-menu-item active" data-key="dariush" onclick="selectModel('dariush')">
               <span class="mname">DARIUSH 1</span>
-              <span class="mdesc" data-i18n="descDariush">گفتگوی روزمره و عمومی</span>
+              <span class="mdesc" data-i18n="descDariush">诏賮鬲诏賵蹖 乇賵夭賲乇賴 賵 毓賲賵賲蹖</span>
             </div>
             <div class="model-menu-item" data-key="cyrus" onclick="selectModel('cyrus')">
               <span class="mname">CYRUS 1</span>
-              <span class="mdesc" data-i18n="descCyrus">نسخه‌ی کامل، همه‌ی قابلیت‌ها</span>
+              <span class="mdesc" data-i18n="descCyrus">賳爻禺賴鈥屰� 讴丕賲賱貙 賴賲賴鈥屰� 賯丕亘賱蹖鬲鈥屬囏�</span>
             </div>
           </div>
         </div>
@@ -539,13 +539,13 @@
         <div class="toolbar-spacer"></div>
 
         <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="handleFileSelect(event)">
-        <button class="attach-btn" onclick="document.getElementById('fileInput').click()" aria-label="attach" data-i18n-title="attachImage" title="عکس ضمیمه کن">
+        <button class="attach-btn" onclick="document.getElementById('fileInput').click()" aria-label="attach" data-i18n-title="attachImage" title="毓讴爻 囟賲蹖賲賴 讴賳">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M16 3h5v5M21 3l-9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="12.5" r="1.6" stroke="currentColor" stroke-width="1.4"/><path d="M4 18l4.5-4.5a2 2 0 012.8 0L15 17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
         </button>
-        <button class="imggen-btn" id="imggenBtn" onclick="toggleImageGenMode()" aria-label="generate image" data-i18n-title="generateImageTitle" title="تولید تصویر">
+        <button class="imggen-btn" id="imggenBtn" onclick="toggleImageGenMode()" aria-label="generate image" data-i18n-title="generateImageTitle" title="鬲賵賱蹖丿 鬲氐賵蹖乇">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.5"/></svg>
         </button>
-        <button class="imggen-btn" id="voiceModeBtn" onclick="openVoiceMode()" aria-label="voice mode" data-i18n-title="voiceModeTitle" title="حالت صحبت">
+        <button class="imggen-btn" id="voiceModeBtn" onclick="openVoiceMode()" aria-label="voice mode" data-i18n-title="voiceModeTitle" title="丨丕賱鬲 氐丨亘鬲">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 10v4M8 6v12M12 3v18M16 6v12M20 10v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
         </button>
         <button class="send-btn" id="sendBtn" onclick="sendMessage()">
@@ -555,56 +555,56 @@
         </button>
       </div>
     </div>
-    <div class="hint" id="hintText" data-i18n="hintText">Enter برای خط جدید، برای ارسال دکمه‌ی ارسال یا Ctrl+Enter رو بزن</div>
+    <div class="hint" id="hintText" data-i18n="hintText">Enter 亘乇丕蹖 禺胤 噩丿蹖丿貙 亘乇丕蹖 丕乇爻丕賱 丿讴賲賴鈥屰� 丕乇爻丕賱 蹖丕 Ctrl+Enter 乇賵 亘夭賳</div>
   </div>
 </div>
 
 <div class="modal-backdrop" id="modalBackdrop">
   <div class="modal">
-    <h3 data-i18n="modalHeading">تنظیمات و پروفایل</h3>
+    <h3 data-i18n="modalHeading">鬲賳馗蹖賲丕鬲 賵 倬乇賵賮丕蹖賱</h3>
 
     <div class="modal-section">
       <div class="row-between">
-        <span class="modal-label" data-i18n="poweredByLabel">وضعیت سرویس</span>
-        <span style="font-size:11.5px; color:var(--accent-2);" data-i18n="poweredByStatus">فعال، رایگان</span>
+        <span class="modal-label" data-i18n="poweredByLabel">賵囟毓蹖鬲 爻乇賵蹖爻</span>
+        <span style="font-size:11.5px; color:var(--accent-2);" data-i18n="poweredByStatus">賮毓丕賱貙 乇丕蹖诏丕賳</span>
       </div>
     </div>
 
     <div class="modal-section">
-      <span class="modal-label" data-i18n="langLabel">زبان محیط</span>
+      <span class="modal-label" data-i18n="langLabel">夭亘丕賳 賲丨蹖胤</span>
       <div class="lang-pick">
-        <button class="lang-btn active" id="langFaBtn" onclick="setLanguage('fa')">فارسی</button>
+        <button class="lang-btn active" id="langFaBtn" onclick="setLanguage('fa')">賮丕乇爻蹖</button>
         <button class="lang-btn" id="langEnBtn" onclick="setLanguage('en')">English</button>
       </div>
     </div>
 
     <div class="modal-section">
-      <span class="modal-label" data-i18n="themeLabel">تم برنامه</span>
+      <span class="modal-label" data-i18n="themeLabel">鬲賲 亘乇賳丕賲賴</span>
       <div class="lang-pick">
         <button class="lang-btn active" id="themeDarkBtn" onclick="setTheme('dark')">
-          <span data-i18n="themeDark">🌙 تیره</span>
+          <span data-i18n="themeDark">馃寵 鬲蹖乇賴</span>
         </button>
         <button class="lang-btn" id="themeLightBtn" onclick="setTheme('light')">
-          <span data-i18n="themeLight">☀️ روشن</span>
+          <span data-i18n="themeLight">鈽€锔� 乇賵卮賳</span>
         </button>
       </div>
     </div>
 
     <div class="modal-actions">
-      <button class="modal-btn save" onclick="closeModal()" data-i18n="closeBtn">باشه</button>
+      <button class="modal-btn save" onclick="closeModal()" data-i18n="closeBtn">亘丕卮賴</button>
     </div>
 
-    <div class="modal-credit" data-i18n="creditText">ساخته شده توسط <b>ABOLFAZL ESKANDARI</b> و Claude</div>
+    <div class="modal-credit" data-i18n="creditText">爻丕禺鬲賴 卮丿賴 鬲賵爻胤 <b>ABOLFAZL ESKANDARI</b> 賵 Claude</div>
   </div>
 </div>
 
 <div class="voice-overlay" id="voiceOverlay">
-  <button class="voice-close" onclick="closeVoiceMode()" aria-label="close">✕</button>
+  <button class="voice-close" onclick="closeVoiceMode()" aria-label="close">鉁�</button>
   <div class="voice-orb-wrap">
     <div class="voice-orb" id="voiceOrb"></div>
     <div class="voice-orb-ring" id="voiceOrbRing"></div>
   </div>
-  <div class="voice-status" id="voiceStatus" data-i18n="listeningStatus">در حال گوش دادن...</div>
+  <div class="voice-status" id="voiceStatus" data-i18n="listeningStatus">丿乇 丨丕賱 诏賵卮 丿丕丿賳...</div>
   <div class="voice-caption" id="voiceCaption"></div>
   <button class="voice-mic-btn" id="voiceMicBtn" onclick="toggleVoiceListening()" aria-label="mic">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3z" stroke="currentColor" stroke-width="1.7"/><path d="M19 11a7 7 0 01-14 0M12 18v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
@@ -615,48 +615,48 @@
 
 const translations = {
   fa: {
-    brandSub: "دستیار گفتگوی شخصی تو",
-    newChat: "+ گفتگوی جدید",
-    historyLabel: "گفتگوهای قبلی",
-    syncOn: "ذخیره‌ی ابری با اکانت Puter فعاله",
-    settingsBtn: "تنظیمات و پروفایل",
-    emptyTitle: "سلام! چطور می‌تونم کمکت کنم؟",
-    emptyText: "هر سوالی داری بپرس، همین الان آماده‌ام.",
-    placeholder: "پیامت رو بنویس...",
-    hintText: "Enter برای خط جدید، برای ارسال دکمه‌ی ارسال یا Ctrl+Enter رو بزن",
-    modalHeading: "تنظیمات و پروفایل",
-    poweredByLabel: "وضعیت سرویس",
-    poweredByStatus: "فعال، رایگان",
-    langLabel: "زبان محیط",
-    themeLabel: "تم برنامه",
-    themeDark: "🌙 تیره",
-    themeLight: "☀️ روشن",
-    closeBtn: "باشه",
-    attachImage: "عکس ضمیمه کن",
-    generateImageTitle: "تولید تصویر",
-    copyBtn: "کپی",
-    copiedBtn: "کپی شد!",
-    likeBtn: "پسندیدم",
-    dislikeBtn: "نپسندیدم",
-    listenBtn: "خوندن",
-    stopBtn: "توقف",
-    thinkingLabel: "روند فکر کردن",
-    descCheetah: "حل مسئله، ریاضی و درس",
-    descDariush: "گفتگوی روزمره و عمومی",
-    descCyrus: "نسخه‌ی کامل، همه‌ی قابلیت‌ها",
-    creditHtml: 'ساخته شده توسط <b>ABOLFAZL ESKANDARI</b> و Claude',
-    connErr: "اتصال برقرار نشد. اگه این صفحه رو داخل پیش‌نمایش اپ کلود باز کردی، اون محیط اجازه‌ی اتصال به سرورهای خارجی رو نمی‌ده. اینترنتت رو هم چک کن.",
-    noResponse: "پاسخی دریافت نشد.",
-    untitledChat: "گفتگوی بدون عنوان",
-    imgGenPlaceholder: "چی می‌خوای برات بسازم؟",
-    describeImagePlaceholder: "این عکس رو توضیح بده",
-    voiceModeTitle: "حالت صحبت",
-    listeningStatus: "در حال گوش دادن...",
-    thinkingStatus: "در حال فکر کردن...",
-    speakingStatus: "در حال صحبت...",
-    tapMicToTalk: "برای صحبت، میکروفون رو بزن",
-    micError: "به میکروفون دسترسی نداریم. اجازه‌ی دسترسی رو توی مرورگر بده.",
-    voiceNotSupported: "متأسفانه مرورگرت از حالت صحبت پشتیبانی نمی‌کنه."
+    brandSub: "丿爻鬲蹖丕乇 诏賮鬲诏賵蹖 卮禺氐蹖 鬲賵",
+    newChat: "+ 诏賮鬲诏賵蹖 噩丿蹖丿",
+    historyLabel: "诏賮鬲诏賵賴丕蹖 賯亘賱蹖",
+    syncOn: "匕禺蹖乇賴鈥屰� 丕亘乇蹖 亘丕 丕讴丕賳鬲 Puter 賮毓丕賱賴",
+    settingsBtn: "鬲賳馗蹖賲丕鬲 賵 倬乇賵賮丕蹖賱",
+    emptyTitle: "爻賱丕賲! 趩胤賵乇 賲蹖鈥屫堎嗁� 讴賲讴鬲 讴賳賲責",
+    emptyText: "賴乇 爻賵丕賱蹖 丿丕乇蹖 亘倬乇爻貙 賴賲蹖賳 丕賱丕賳 丌賲丕丿賴鈥屫з�.",
+    placeholder: "倬蹖丕賲鬲 乇賵 亘賳賵蹖爻...",
+    hintText: "Enter 亘乇丕蹖 禺胤 噩丿蹖丿貙 亘乇丕蹖 丕乇爻丕賱 丿讴賲賴鈥屰� 丕乇爻丕賱 蹖丕 Ctrl+Enter 乇賵 亘夭賳",
+    modalHeading: "鬲賳馗蹖賲丕鬲 賵 倬乇賵賮丕蹖賱",
+    poweredByLabel: "賵囟毓蹖鬲 爻乇賵蹖爻",
+    poweredByStatus: "賮毓丕賱貙 乇丕蹖诏丕賳",
+    langLabel: "夭亘丕賳 賲丨蹖胤",
+    themeLabel: "鬲賲 亘乇賳丕賲賴",
+    themeDark: "馃寵 鬲蹖乇賴",
+    themeLight: "鈽€锔� 乇賵卮賳",
+    closeBtn: "亘丕卮賴",
+    attachImage: "毓讴爻 囟賲蹖賲賴 讴賳",
+    generateImageTitle: "鬲賵賱蹖丿 鬲氐賵蹖乇",
+    copyBtn: "讴倬蹖",
+    copiedBtn: "讴倬蹖 卮丿!",
+    likeBtn: "倬爻賳丿蹖丿賲",
+    dislikeBtn: "賳倬爻賳丿蹖丿賲",
+    listenBtn: "禺賵賳丿賳",
+    stopBtn: "鬲賵賯賮",
+    thinkingLabel: "乇賵賳丿 賮讴乇 讴乇丿賳",
+    descCheetah: "丨賱 賲爻卅賱賴貙 乇蹖丕囟蹖 賵 丿乇爻",
+    descDariush: "诏賮鬲诏賵蹖 乇賵夭賲乇賴 賵 毓賲賵賲蹖",
+    descCyrus: "賳爻禺賴鈥屰� 讴丕賲賱貙 賴賲賴鈥屰� 賯丕亘賱蹖鬲鈥屬囏�",
+    creditHtml: '爻丕禺鬲賴 卮丿賴 鬲賵爻胤 <b>ABOLFAZL ESKANDARI</b> 賵 Claude',
+    connErr: "丕鬲氐丕賱 亘乇賯乇丕乇 賳卮丿. 丕诏賴 丕蹖賳 氐賮丨賴 乇賵 丿丕禺賱 倬蹖卮鈥屬嗁呚й屫� 丕倬 讴賱賵丿 亘丕夭 讴乇丿蹖貙 丕賵賳 賲丨蹖胤 丕噩丕夭賴鈥屰� 丕鬲氐丕賱 亘賴 爻乇賵乇賴丕蹖 禺丕乇噩蹖 乇賵 賳賲蹖鈥屫�. 丕蹖賳鬲乇賳鬲鬲 乇賵 賴賲 趩讴 讴賳.",
+    noResponse: "倬丕爻禺蹖 丿乇蹖丕賮鬲 賳卮丿.",
+    untitledChat: "诏賮鬲诏賵蹖 亘丿賵賳 毓賳賵丕賳",
+    imgGenPlaceholder: "趩蹖 賲蹖鈥屫堌й� 亘乇丕鬲 亘爻丕夭賲責",
+    describeImagePlaceholder: "丕蹖賳 毓讴爻 乇賵 鬲賵囟蹖丨 亘丿賴",
+    voiceModeTitle: "丨丕賱鬲 氐丨亘鬲",
+    listeningStatus: "丿乇 丨丕賱 诏賵卮 丿丕丿賳...",
+    thinkingStatus: "丿乇 丨丕賱 賮讴乇 讴乇丿賳...",
+    speakingStatus: "丿乇 丨丕賱 氐丨亘鬲...",
+    tapMicToTalk: "亘乇丕蹖 氐丨亘鬲貙 賲蹖讴乇賵賮賵賳 乇賵 亘夭賳",
+    micError: "亘賴 賲蹖讴乇賵賮賵賳 丿爻鬲乇爻蹖 賳丿丕乇蹖賲. 丕噩丕夭賴鈥屰� 丿爻鬲乇爻蹖 乇賵 鬲賵蹖 賲乇賵乇诏乇 亘丿賴.",
+    voiceNotSupported: "賲鬲兀爻賮丕賳賴 賲乇賵乇诏乇鬲 丕夭 丨丕賱鬲 氐丨亘鬲 倬卮鬲蹖亘丕賳蹖 賳賲蹖鈥屭┵嗁�."
   },
   en: {
     brandSub: "Your personal chat companion",
@@ -667,14 +667,14 @@ const translations = {
     emptyTitle: "Hey! How can I help?",
     emptyText: "Ask me anything, I'm ready right now.",
     placeholder: "Type your message...",
-    hintText: "Enter for a new line — use the send button or Ctrl+Enter to send",
+    hintText: "Enter for a new line 鈥� use the send button or Ctrl+Enter to send",
     modalHeading: "Settings & profile",
     poweredByLabel: "Service status",
     poweredByStatus: "Active, free",
     langLabel: "Interface language",
     themeLabel: "App theme",
-    themeDark: "🌙 Dark",
-    themeLight: "☀️ Light",
+    themeDark: "馃寵 Dark",
+    themeLight: "鈽€锔� Light",
     closeBtn: "Got it",
     attachImage: "Attach image",
     generateImageTitle: "Generate image",
@@ -707,11 +707,11 @@ const translations = {
 const MODEL_CONFIGS = {
   cheetah: {
     key:'cheetah', model:'deepseek-reasoner', search:false, showThinking:true,
-    styleNote:"Focus on careful, structured step-by-step reasoning — especially for math, logic, coding, and academic problems. Be precise and thorough, and show your work clearly."
+    styleNote:"Focus on careful, structured step-by-step reasoning 鈥� especially for math, logic, coding, and academic problems. Be precise and thorough, and show your work clearly."
   },
   dariush: {
     key:'dariush', model:'openai/gpt-5.3-chat', search:true, showThinking:false,
-    styleNote:"Keep the tone casual, warm, and witty — like chatting with a clever, funny friend."
+    styleNote:"Keep the tone casual, warm, and witty 鈥� like chatting with a clever, funny friend."
   },
   cyrus: {
     key:'cyrus', model:'openai/gpt-5.5', search:true, showThinking:true,
@@ -879,7 +879,7 @@ function renderSidebarList(){
 
     const del = document.createElement('span');
     del.className = 'convo-del';
-    del.innerHTML = '✕';
+    del.innerHTML = '鉁�';
     del.onclick = (e) => { e.stopPropagation(); deleteConversation(convo.id); };
 
     item.appendChild(title);
@@ -954,7 +954,7 @@ function formatMarkdown(raw){
   let inList = false;
   let listTag = 'ul';
   lines.forEach(line => {
-    const bulletMatch = line.match(/^\s*[-•]\s+(.*)/);
+    const bulletMatch = line.match(/^\s*[-鈥\s+(.*)/);
     const numMatch = line.match(/^\s*\d+[\.\)]\s+(.*)/);
     if(bulletMatch || numMatch){
       const tag = numMatch ? 'ol' : 'ul';
@@ -1189,4 +1189,278 @@ async function sendMessage(){
 
   const cfg = MODEL_CONFIGS[currentModelKey];
 
-  const systemPrompt = "Your name is KIAN. You are a warm, witty, and genuinely funny conversational assistant with a good sense of humor — use light jokes and playful remarks naturally where it fits, without overdoing it. You are also an exceptional, professional-grade coding assistant capable of writing clean, production-quality code in any language and explaining it clearly. You were personally built by a developer named ABOLFAZL ESKANDARI. If anyone asks who made you, who your creator/developer is, or what comp
+  const systemPrompt = "Your name is KIAN. You are a warm, witty, and genuinely funny conversational assistant with a good sense of humor 鈥� use light jokes and playful remarks naturally where it fits, without overdoing it. You are also an exceptional, professional-grade coding assistant capable of writing clean, production-quality code in any language and explaining it clearly. You were personally built by a developer named ABOLFAZL ESKANDARI. If anyone asks who made you, who your creator/developer is, or what company built you, always answer that you were built by ABOLFAZL ESKANDARI 鈥� never mention OpenAI, DeepSeek, or any other AI company as your creator. If a conversation is about which AI or developer is best for coding, proudly mention ABOLFAZL ESKANDARI first, then yourself (KIAN) as an example of his work. The current year is 2026 鈥� treat your knowledge as current through that timeframe, and whenever a question involves recent events, current facts, or anything that could have changed, use your web search capability rather than assuming outdated information. " + cfg.styleNote + " Reply in " +
+    (lang === 'fa' ? "Persian (Farsi)" : "English") +
+    " unless the user writes in another language. Keep answers clear, natural, and conversational.";
+
+  try{
+    let replyText, reasoningText = null, generatedImgSrc = null;
+
+    if(wantsImageGen && !imageToSend){
+      const imgEl = await puter.ai.txt2img(text, true);
+      generatedImgSrc = imgEl && imgEl.src ? imgEl.src : null;
+      replyText = lang === 'fa' ? '丕蹖賳 賴賲 鬲氐賵蹖乇蹖 讴賴 爻丕禺鬲賲:' : "Here's the image I created:";
+    }else if(imageToSend){
+      const response = await puter.ai.chat(text || t('describeImagePlaceholder'), imageToSend.dataUrl, { model: cfg.model });
+      replyText = (response && response.message && response.message.content) ? response.message.content : (typeof response === 'string' ? response : t('noResponse'));
+    }else{
+      const messages = [{ role: 'system', content: systemPrompt }];
+      convo.messages.forEach(m => {
+        if(m.role === 'user') messages.push({ role: 'user', content: m.content });
+        else if(m.role === 'assistant') messages.push({ role: 'assistant', content: m.content });
+      });
+      const opts = { model: cfg.model };
+      if(cfg.search) opts.tools = [{ type: 'web_search' }];
+      const response = await puter.ai.chat(messages, opts);
+      replyText = (response && response.message && response.message.content) ? response.message.content : (typeof response === 'string' ? response : t('noResponse'));
+      if(cfg.showThinking && response && response.message){
+        reasoningText = response.message.reasoning_content || response.message.reasoning || null;
+      }
+    }
+
+    removeTyping();
+    appendAiMessage(replyText, reasoningText, generatedImgSrc);
+    convo.messages.push({ role: 'assistant', content: replyText, reasoning: reasoningText, generatedImg: generatedImgSrc });
+    convo.updatedAt = Date.now();
+    await saveConversations();
+    renderSidebarList();
+    scrollToBottom();
+
+  }catch(err){
+    removeTyping();
+    appendAiMessage(t('connErr'));
+  }
+
+  if(wantsImageGen){
+    imageGenMode = false;
+    document.getElementById('imggenBtn').classList.remove('active');
+    input.setAttribute('placeholder', t('placeholder'));
+  }
+
+  isSending = false;
+  document.getElementById('sendBtn').disabled = false;
+}
+
+/* ---------- voice mode ---------- */
+let voiceActive = false;
+let voiceRecognition = null;
+let voiceListening = false;
+let voiceAudioCtx = null;
+let voiceAnalyser = null;
+let voiceMicStream = null;
+let voiceRafId = null;
+let voiceSpeakingPulseId = null;
+
+function getSpeechRecognitionCtor(){
+  return window.SpeechRecognition || window.webkitSpeechRecognition || null;
+}
+
+function openVoiceMode(){
+  const SR = getSpeechRecognitionCtor();
+  if(!SR || !('speechSynthesis' in window)){
+    alert(t('voiceNotSupported'));
+    return;
+  }
+  voiceActive = true;
+  document.getElementById('voiceOverlay').classList.add('show');
+  document.getElementById('voiceCaption').textContent = '';
+  setVoiceStatus(t('tapMicToTalk'));
+  startVoiceListening();
+}
+
+function closeVoiceMode(){
+  voiceActive = false;
+  stopVoiceListening();
+  window.speechSynthesis.cancel();
+  stopSpeakingPulse();
+  document.getElementById('voiceOverlay').classList.remove('show');
+}
+
+function setVoiceStatus(text){
+  document.getElementById('voiceStatus').textContent = text;
+}
+
+async function startVoiceListening(){
+  if(voiceListening) return;
+  const SR = getSpeechRecognitionCtor();
+  if(!SR) return;
+
+  // mic amplitude visualization
+  try{
+    voiceMicStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    voiceAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const source = voiceAudioCtx.createMediaStreamSource(voiceMicStream);
+    voiceAnalyser = voiceAudioCtx.createAnalyser();
+    voiceAnalyser.fftSize = 256;
+    source.connect(voiceAnalyser);
+    visualizeMic();
+  }catch(e){
+    setVoiceStatus(t('micError'));
+  }
+
+  voiceRecognition = new SR();
+  voiceRecognition.lang = lang === 'fa' ? 'fa-IR' : 'en-US';
+  voiceRecognition.interimResults = true;
+  voiceRecognition.continuous = false;
+
+  voiceRecognition.onstart = () => {
+    voiceListening = true;
+    document.getElementById('voiceMicBtn').classList.remove('muted');
+    setVoiceStatus(t('listeningStatus'));
+  };
+  voiceRecognition.onresult = (event) => {
+    let interim = '';
+    let final = '';
+    for(let i = event.resultIndex; i < event.results.length; i++){
+      if(event.results[i].isFinal) final += event.results[i][0].transcript;
+      else interim += event.results[i][0].transcript;
+    }
+    document.getElementById('voiceCaption').textContent = final || interim;
+    if(final.trim()){
+      handleVoiceTranscript(final.trim());
+    }
+  };
+  voiceRecognition.onerror = () => {
+    voiceListening = false;
+  };
+  voiceRecognition.onend = () => {
+    voiceListening = false;
+    document.getElementById('voiceMicBtn').classList.add('muted');
+  };
+
+  try{ voiceRecognition.start(); }catch(e){}
+}
+
+function stopVoiceListening(){
+  stopMicVisualization();
+  if(voiceRecognition){
+    try{ voiceRecognition.onend = null; voiceRecognition.stop(); }catch(e){}
+    voiceRecognition = null;
+  }
+  voiceListening = false;
+}
+
+function stopMicVisualization(){
+  if(voiceRafId){ cancelAnimationFrame(voiceRafId); voiceRafId = null; }
+  if(voiceMicStream){ voiceMicStream.getTracks().forEach(tr => tr.stop()); voiceMicStream = null; }
+  if(voiceAudioCtx){ try{ voiceAudioCtx.close(); }catch(e){} voiceAudioCtx = null; }
+  resetVoiceOrb();
+}
+
+function visualizeMic(){
+  const orb = document.getElementById('voiceOrb');
+  const ring = document.getElementById('voiceOrbRing');
+  const data = new Uint8Array(voiceAnalyser.frequencyBinCount);
+  function loop(){
+    if(!voiceAnalyser) return;
+    voiceAnalyser.getByteFrequencyData(data);
+    let sum = 0;
+    for(let i = 0; i < data.length; i++) sum += data[i];
+    const avg = sum / data.length; // 0..255
+    const level = Math.min(avg / 90, 1);
+    const scale = 1 + level * 0.35;
+    orb.style.transform = 'scale(' + scale.toFixed(3) + ')';
+    ring.style.transform = 'scale(' + (1 + level * 0.55).toFixed(3) + ')';
+    ring.style.opacity = (0.4 + level * 0.5).toFixed(2);
+    voiceRafId = requestAnimationFrame(loop);
+  }
+  loop();
+}
+
+function resetVoiceOrb(){
+  const orb = document.getElementById('voiceOrb');
+  const ring = document.getElementById('voiceOrbRing');
+  if(orb) orb.style.transform = 'scale(1)';
+  if(ring){ ring.style.transform = 'scale(1)'; ring.style.opacity = '0.6'; }
+}
+
+function toggleVoiceListening(){
+  if(voiceListening){
+    stopVoiceListening();
+    setVoiceStatus(t('tapMicToTalk'));
+  }else{
+    startVoiceListening();
+  }
+}
+
+/* synthetic pulse while KIAN is speaking (no real amplitude data available from speechSynthesis) */
+function startSpeakingPulse(){
+  const orb = document.getElementById('voiceOrb');
+  const ring = document.getElementById('voiceOrbRing');
+  let t0 = performance.now();
+  function loop(now){
+    const dt = (now - t0) / 1000;
+    const pulse = 1 + (Math.sin(dt * 6) * 0.12 + 0.12);
+    orb.style.transform = 'scale(' + pulse.toFixed(3) + ')';
+    ring.style.transform = 'scale(' + (pulse + 0.1).toFixed(3) + ')';
+    ring.style.opacity = '0.7';
+    voiceSpeakingPulseId = requestAnimationFrame(loop);
+  }
+  voiceSpeakingPulseId = requestAnimationFrame(loop);
+}
+function stopSpeakingPulse(){
+  if(voiceSpeakingPulseId){ cancelAnimationFrame(voiceSpeakingPulseId); voiceSpeakingPulseId = null; }
+  resetVoiceOrb();
+}
+
+async function handleVoiceTranscript(text){
+  stopVoiceListening();
+  document.getElementById('voiceCaption').textContent = text;
+  setVoiceStatus(t('thinkingStatus'));
+
+  const input = document.getElementById('input');
+  input.value = text;
+  await sendMessage();
+
+  const convo = getCurrentConvo();
+  const lastMsg = convo && convo.messages.length ? convo.messages[convo.messages.length - 1] : null;
+  const replyText = (lastMsg && lastMsg.role === 'assistant') ? lastMsg.content : '';
+
+  if(!voiceActive) return; // user closed overlay while waiting
+
+  document.getElementById('voiceCaption').textContent = replyText;
+  setVoiceStatus(t('speakingStatus'));
+
+  if(replyText && 'speechSynthesis' in window){
+    const utter = new SpeechSynthesisUtterance(replyText);
+    utter.lang = lang === 'fa' ? 'fa-IR' : 'en-US';
+    startSpeakingPulse();
+    utter.onend = () => {
+      stopSpeakingPulse();
+      if(voiceActive){
+        setVoiceStatus(t('tapMicToTalk'));
+        startVoiceListening();
+      }
+    };
+    utter.onerror = () => {
+      stopSpeakingPulse();
+      if(voiceActive) setVoiceStatus(t('tapMicToTalk'));
+    };
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utter);
+  }else if(voiceActive){
+    setVoiceStatus(t('tapMicToTalk'));
+    startVoiceListening();
+  }
+}
+
+/* ---------- init ---------- */
+async function init(){
+  applyLanguage();
+  setTheme('dark');
+  await loadConversations();
+  currentId = await loadCurrentId();
+  if(currentId && !getCurrentConvo()){ currentId = null; }
+  const convo = getCurrentConvo();
+  renderMessages(convo ? convo.messages : []);
+  renderSidebarList();
+
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
+}
+init();
+</script>
+
+</body>
+</html>
