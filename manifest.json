@@ -1,0 +1,25 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "K I A N",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "K I A N",
+  "start_url": "/",
+  "theme_color": "#14111F",
+  "icons": [
+    {
+      "src": "https://abolfazl-369.github.io/K-I-A-N-/icon-192.png",
+      "isSquare": false,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 0,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    }
+  ],
+  "id": "com.kian.ai"
+}
